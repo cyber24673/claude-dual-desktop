@@ -33,7 +33,43 @@ preferences, etc.) under `~/.claude-desktop-profiles/<id>/`.
   run at once.
 - Running instances are detected by scanning processes and checking lockfiles.
 
-## Requirements
+## Installation
+
+> **Requires [Claude Desktop](https://claude.ai/download) to already be installed.**
+
+1. Go to the [**Releases**](../../releases) page.
+2. Download the latest installer (`.msi` or `claude-dual-desktop_x.x.x_x64-setup.exe`).
+3. Run it and follow the installer.
+
+### "Windows protected your PC" warning
+
+This app is **not code-signed** (signing certificates are costly), so Windows
+SmartScreen may warn you on first run. This is expected for small open-source
+apps. To continue:
+
+1. Click **More info**
+2. Click **Run anyway**
+
+You can review the full source code in this repository to verify what it does.
+
+## Usage
+
+1. Open **Claude Dual**.
+2. Click the **+** button to create a profile — give it a name and a color.
+3. Click **Open** (Abrir) on a profile to launch Claude Desktop with that
+   profile's isolated session.
+4. The first time you open a profile, Claude Desktop starts fresh and asks you to
+   log in. Each profile keeps its own login.
+5. Profile status (running / stopped) updates automatically.
+6. To remove a profile, close it first, then click **Delete** (Eliminar).
+
+> The first time you run a *second* profile at the same time, the app makes a
+> local copy of Claude Desktop (a few hundred MB), which can take a moment.
+
+## Build requirements
+
+Only needed if you want to compile it yourself (end users can just use the
+installer from Releases):
 
 - Windows 10/11
 - [Claude Desktop](https://claude.ai/download) installed (MSIX / Store version)
