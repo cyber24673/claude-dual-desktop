@@ -6,6 +6,8 @@ session and login — switch between them from a simple desktop app.
 
 > Built with [Tauri 2](https://tauri.app/) (Rust backend + HTML/JS frontend).
 
+[![Download for Windows](https://img.shields.io/github/v/release/cyber24673/claude-dual-desktop?label=Download%20for%20Windows&style=flat-square)](https://github.com/cyber24673/claude-dual-desktop/releases/latest)
+
 ## Why
 
 Claude Desktop on Windows ships as an **MSIX (Microsoft Store) package**, which
