@@ -1,0 +1,9 @@
+{
+  "name": "claude-dual",
+  "version": "0.1.0",
+  "description": "Multi-profile launcher for Claude Desktop",
+  "scripts": {
+    "tauri": "cargo tauri"
+  },
+  "license": "MIT"
+}

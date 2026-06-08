@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claude Dual</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="hero">
+      <img src="banner.png" alt="" class="hero-img" />
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Claude Dual</h1>
+        <p class="hero-sub">Multi-profile launcher</p>
+      </div>
+    </div>
+    <div class="toolbar">
+      <span class="toolbar-label" id="profile-count"></span>
+      <button id="btn-add" title="Nuevo perfil">+ Nuevo perfil</button>
+    </div>
+  </header>
+
+  <main id="profile-list"></main>
+
+  <!-- Modal: crear perfil -->
+  <dialog id="dlg-create">
+    <form method="dialog" id="form-create">
+      <h2>Nuevo perfil</h2>
+      <label>
+        Nombre
+        <input type="text" id="input-name" required autofocus maxlength="64" placeholder="ej. Personal, Trabajo..." />
+      </label>
+      <div class="color-pick">
+        <span class="color-label">Color</span>
+        <div id="color-options" class="color-options">
+          <button type="button" class="color-opt selected" data-color="#7c3aed" style="background:#7c3aed"></button>
+          <button type="button" class="color-opt" data-color="#3b82f6" style="background:#3b82f6"></button>
+          <button type="button" class="color-opt" data-color="#22c55e" style="background:#22c55e"></button>
+          <button type="button" class="color-opt" data-color="#f59e0b" style="background:#f59e0b"></button>
+          <button type="button" class="color-opt" data-color="#ef4444" style="background:#ef4444"></button>
+          <button type="button" class="color-opt" data-color="#ec4899" style="background:#ec4899"></button>
+          <button type="button" class="color-opt" data-color="#06b6d4" style="background:#06b6d4"></button>
+          <button type="button" class="color-opt" data-color="#8b5cf6" style="background:#8b5cf6"></button>
+        </div>
+      </div>
+      <div class="dlg-actions">
+        <button type="button" id="btn-cancel-create">Cancelar</button>
+        <button type="submit" class="primary">Crear</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Modal: confirmar eliminación -->
+  <dialog id="dlg-delete">
+    <h2>Eliminar perfil</h2>
+    <p>Se borrara <strong id="delete-name"></strong> y todos sus datos. Esta accion no se puede deshacer.</p>
+    <div class="dlg-actions">
+      <button id="btn-cancel-delete">Cancelar</button>
+      <button id="btn-confirm-delete" class="danger">Eliminar</button>
+    </div>
+  </dialog>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
