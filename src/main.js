@@ -48,17 +48,19 @@ async function refresh() {
       </span>
       <div class="card-actions">
         <button class="btn-launch">${isRunning ? "Reabrir" : "Abrir"}</button>
-        <button class="btn-delete" ${isRunning ? 'disabled title="Cierra Claude antes de eliminar"' : ''}>Eliminar</button>
+        ${isRunning
+          ? '<button class="btn-stop">Detener</button>'
+          : '<button class="btn-delete">Eliminar</button>'}
       </div>
     `;
 
     const btnLaunch = card.querySelector(".btn-launch");
+    const btnStop = card.querySelector(".btn-stop");
     const btnDelete = card.querySelector(".btn-delete");
 
     btnLaunch.addEventListener("click", () => launchProfile(p.id, btnLaunch));
-    if (!isRunning) {
-      btnDelete.addEventListener("click", () => confirmDelete(p));
-    }
+    if (btnStop) btnStop.addEventListener("click", () => stopProfile(p.id));
+    if (btnDelete) btnDelete.addEventListener("click", () => confirmDelete(p));
 
     list.appendChild(card);
   }
@@ -82,6 +84,15 @@ async function launchProfile(id, btn) {
 
   launching = false;
   document.querySelectorAll(".btn-launch").forEach(b => b.disabled = false);
+  await refresh();
+}
+
+async function stopProfile(id) {
+  try {
+    await invoke("stop_profile", { id });
+  } catch (e) {
+    alert("Error al detener: " + e);
+  }
   await refresh();
 }
 

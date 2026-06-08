@@ -12,7 +12,22 @@ fn create_profile(name: String, color: String) -> Result<profiles::Profile, Stri
 }
 
 #[tauri::command]
+fn stop_profile(id: String) -> Result<(), String> {
+    let dir = profiles::profile_data_dir(&id);
+    // If it's the primary, kill MSIX and save data back
+    if launcher::get_primary_id().as_deref() == Some(id.as_str()) {
+        launcher::stop_primary(&id);
+    }
+    // If it's a secondary, kill its copy processes
+    launcher::stop_secondary(&dir);
+    Ok(())
+}
+
+#[tauri::command]
 fn delete_profile(id: String) -> Result<(), String> {
+    // Stop the profile first if running
+    stop_profile(id.clone())?;
+    std::thread::sleep(std::time::Duration::from_millis(1500));
     profiles::delete(&id)
 }
 
@@ -37,6 +52,7 @@ pub fn run() {
             list_profiles,
             create_profile,
             delete_profile,
+            stop_profile,
             launch_profile,
             get_running,
         ])

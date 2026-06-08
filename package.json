@@ -1,6 +1,6 @@
 {
   "name": "claude-dual",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Multi-profile launcher for Claude Desktop",
   "scripts": {
     "tauri": "cargo tauri"

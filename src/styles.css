@@ -162,6 +162,9 @@ main {
   pointer-events: none; opacity: 0.6;
 }
 
+.card-actions .btn-stop { color: var(--orange); border-color: var(--orange); }
+.card-actions .btn-stop:hover { background: rgba(249, 115, 22, 0.12); }
+
 .card-actions .btn-delete { color: var(--text-dim); }
 .card-actions .btn-delete:hover { color: var(--danger); background: rgba(239, 68, 68, 0.1); }
 

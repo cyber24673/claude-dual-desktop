@@ -215,6 +215,20 @@ fn is_profile_running(profile_id: &str, profile_data_dir: &Path) -> bool {
     false
 }
 
+/// Stop the primary (MSIX) instance and save its data back to the profile.
+pub fn stop_primary(profile_id: &str) {
+    kill_claude_msix();
+    std::thread::sleep(std::time::Duration::from_millis(1500));
+    let profile_dir = crate::profiles::profile_data_dir(profile_id);
+    save_to_profile(&profile_dir);
+    fs::remove_file(active_file()).ok();
+}
+
+/// Stop a secondary (copied exe) instance.
+pub fn stop_secondary(profile_data_dir: &Path) {
+    kill_secondary(profile_data_dir);
+}
+
 // --- Process detection ---
 
 fn check_msix_running() -> bool {
